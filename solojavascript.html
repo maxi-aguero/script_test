@@ -1,0 +1,39 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js">
+</script>
+
+<script type="text/javascript">			
+			function actual(){//get del valor actual
+					return document.getElementById("name").value;
+				}
+				
+			function guardar(par){//guardar en cookie 					
+                 document.cookie = "idcookie="+(((document.cookie.split(";"))[0]).split("=")) +"*"+par;              
+				}
+				
+			function coleccion(){ //mostrar array                 
+                 var datos=((((document.cookie.split(";"))[0]).split("="))[1]).split("*");                 
+				 
+				 for(i=1; i< datos.length; i++ ){                     
+                     $('body').append("Ingrese al array y tengo el ID: " +datos[i]);
+                     $('body').append('<br/>');
+                 }
+				 $('body').append("----------------------------------"+"<br/>");
+				
+			   }
+			   					
+			function append_(){ //agregar al cuerpo
+					//condicion: numero par entre 2 y 10
+					 condicion=actual();
+					if(  parseInt(condicion) )
+						if (condicion>=2&&condicion<=10&&condicion%2==0)
+					{guardar(actual());
+					coleccion();
+					}
+										
+				}                 
+	</script>    
+
+<form action="" id="form">
+	<input type="text"  id="name">
+    <button type="button" onClick="append_()">Enviar </button>
+</form>
